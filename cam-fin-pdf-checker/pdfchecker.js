@@ -1,10 +1,6 @@
-
-//Replace the year value you want your automation to check for: 
-const year = 2019
+//Replace the year value you want your automation to check for:
+const year = 2019;
 //-----------------------------------------------------
-
-
-
 
 const assert = require("assert");
 const { Builder, By, Key, until, WebElement } = require("selenium-webdriver");
@@ -78,7 +74,7 @@ describe("PDF Checker | Test Started", function () {
     const totalPages = Math.ceil(number / recordsPerPage);
     console.log(totalPages + " - pages"); //page number
 
-    for (let page = 61; page <= totalPages; page++) {
+    for (let page = 65; page <= totalPages; page++) {
       await driver.get(URL);
       await driver.executeScript(
         "window.scrollTo(0, document.body.scrollHeight)"
@@ -98,72 +94,93 @@ describe("PDF Checker | Test Started", function () {
 
       switch (true) {
         case page >= 11:
-          let clickElement = await driver
-          .findElement(By.xpath("//a[normalize-space()='>>']"));
+          let clickElement = await driver.findElement(
+            By.xpath("//a[normalize-space()='>>']")
+          );
 
-          await driver.executeScript("arguments[0].scrollIntoView();", clickElement);
+          await driver.executeScript(
+            "arguments[0].scrollIntoView();",
+            clickElement
+          );
           await clickElement.click();
-        break;
+          break;
       }
-
 
       await driver.sleep(5000);
 
       switch (true) {
         case page >= 21:
-          let clickElement = await driver
-            .findElement(By.xpath("//a[normalize-space()='>>']"));
+          let clickElement = await driver.findElement(
+            By.xpath("//a[normalize-space()='>>']")
+          );
 
-            await driver.executeScript("arguments[0].scrollIntoView();", clickElement);
-            await clickElement.click();
+          await driver.executeScript(
+            "arguments[0].scrollIntoView();",
+            clickElement
+          );
+          await clickElement.click();
           break;
       }
       await driver.sleep(5000);
-     
+
       switch (true) {
         case page >= 31:
-          let clickElement = await driver
-            .findElement(By.xpath("//a[normalize-space()='>>']"));
+          let clickElement = await driver.findElement(
+            By.xpath("//a[normalize-space()='>>']")
+          );
 
-            await driver.executeScript("arguments[0].scrollIntoView();", clickElement);
-            await clickElement.click();
+          await driver.executeScript(
+            "arguments[0].scrollIntoView();",
+            clickElement
+          );
+          await clickElement.click();
           break;
       }
 
       await driver.sleep(5000);
       switch (true) {
         case page >= 41:
-          let clickElement = await driver
-            .findElement(By.xpath("//a[normalize-space()='>>']"));
+          let clickElement = await driver.findElement(
+            By.xpath("//a[normalize-space()='>>']")
+          );
 
-            await driver.executeScript("arguments[0].scrollIntoView();", clickElement);
-            await clickElement.click();
+          await driver.executeScript(
+            "arguments[0].scrollIntoView();",
+            clickElement
+          );
+          await clickElement.click();
           break;
       }
-      
-     await driver.sleep(5000);
+
+      await driver.sleep(5000);
       switch (true) {
         case page >= 51:
-          let clickElement = await driver
-          .findElement(By.xpath("//a[normalize-space()='>>']"));
+          let clickElement = await driver.findElement(
+            By.xpath("//a[normalize-space()='>>']")
+          );
 
-          await driver.executeScript("arguments[0].scrollIntoView();", clickElement);
+          await driver.executeScript(
+            "arguments[0].scrollIntoView();",
+            clickElement
+          );
           await clickElement.click();
-        break;
+          break;
       }
 
       await driver.sleep(5000);
       switch (true) {
         case page >= 61:
-          let clickElement = await driver
-          .findElement(By.xpath("//a[normalize-space()='>>']"));
+          let clickElement = await driver.findElement(
+            By.xpath("//a[normalize-space()='>>']")
+          );
 
-          await driver.executeScript("arguments[0].scrollIntoView();", clickElement);
+          await driver.executeScript(
+            "arguments[0].scrollIntoView();",
+            clickElement
+          );
           await clickElement.click();
-        break;
+          break;
       }
-
-
 
       await driver.sleep(5000);
 
@@ -316,12 +333,6 @@ describe("PDF Checker | Test Started", function () {
 
           await driver.sleep(2000);
 
-
-
-          
-
-
-
           let screenshot = await driver.takeScreenshot();
           let timestamp = new Date()
             .toISOString()
@@ -346,15 +357,13 @@ describe("PDF Checker | Test Started", function () {
 
           try {
             const jsonData = JSON.parse(deocodedfor);
-          
-            const reportId = jsonData.reportId;
-            
-            fs.appendFileSync(`${year}ReportIDsOnly.txt`, reportId + ",");
-          } catch(error){
-            console.log("No report id found because page could not be opened")
-          }
 
-          
+            const reportId = jsonData.reportId;
+
+            fs.appendFileSync(`${year}ReportIDsOnly.txt`, reportId + ",");
+          } catch (error) {
+            console.log("No report id found because page could not be opened");
+          }
 
           //fs.appendFileSync('BrokenPDFLinks.txt', brokenPDFlink + '\n');
 
